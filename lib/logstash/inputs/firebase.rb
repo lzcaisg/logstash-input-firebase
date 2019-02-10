@@ -17,30 +17,30 @@ require 'rest-firebase'
 #
 # [source,ruby]
 # ----------------------------------
-# input {
-#   firebase {
-#     url => 'https://test.firebaseio.com'
-#     auth => 'secret'
-#     # Supports 'cron', 'every', 'at' and 'in' schedules by rufus scheduler
-#     schedule => { cron => '* * * * * UTC'}
-#     refs => {
-#       user_details => {
-#         path => '/user/details'
-#       }
-#       company_orders => {
-#         path => '/company/orders'
-#         orderBy => '$key'
-#         limitToFirst => 3
-#       }
-#     }
-#   }
-# }
-#
-# output {
-#   stdout {
-#     codec => rubydebug
-#   }
-# }
+input {
+  firebase {
+    url => 'https://spirit-iot-test.firebaseio.com'
+    auth => 'AIzaSyBASV09Np3FFgymUFJcXV6czKsbCCYautM'
+    # Supports 'cron', 'every', 'at' and 'in' schedules by rufus scheduler
+    # schedule => { cron => '* * * * * UTC'}
+    refs => {
+      sensor_data => {
+        path => '/sensor'
+      }
+      # company_orders => {
+      #   path => '/company/orders'
+      #   orderBy => '$key'
+      #   limitToFirst => 3
+      # }
+    }
+  }
+}
+
+output {
+  stdout {
+    codec => rubydebug
+  }
+}
 # ----------------------------------
 
 class LogStash::Inputs::Firebase < LogStash::Inputs::Base
